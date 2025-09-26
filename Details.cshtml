@@ -1,0 +1,18 @@
+﻿@model Course
+
+<h2 class="mb-4">Course Details</h2>
+
+<div class="mb-3">
+    <label class="form-label">Title:</label>
+    <p class="form-control-plaintext">@Model.Title</p>
+</div>
+
+<h5>Enrolled Students:</h5>
+<ul class="list-group">
+    @foreach (var sc in Model.StudentCourses)
+    {
+        <li class="list-group-item">@sc.Student.Name</li>
+    }
+</ul>
+
+<a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>

@@ -1,0 +1,29 @@
+﻿@model List<Student>
+
+<h2>Student List</h2>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Courses</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Name</td>
+                <td>
+                    @foreach (var sc in student.StudentCourses)
+                    {
+                        <span class="badge bg-primary">@sc.Course.Title</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Enroll" asp-route-id="@student.StudentId" class="btn btn-sm btn-info">Enroll</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

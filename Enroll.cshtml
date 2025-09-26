@@ -1,0 +1,18 @@
+﻿@model StudentCourseViewModel
+
+<h2>Enroll @Model.StudentName in Courses</h2>
+<form asp-action="Enroll" method="post">
+    <input type="hidden" asp-for="StudentId" />
+    <div class="form-group">
+        @for (int i = 0; i < Model.AvailableCourses.Count; i++)
+        {
+            <div class="form-check">
+                <input asp-for="AvailableCourses[i].IsSelected" class="form-check-input" />
+                <label class="form-check-label">@Model.AvailableCourses[i].Title</label>
+                <input type="hidden" asp-for="AvailableCourses[i].CourseId" />
+                <input type="hidden" asp-for="AvailableCourses[i].Title" />
+            </div>
+        }
+    </div>
+    <button type="submit" class="btn btn-success mt-3">Save Enrollment</button>
+</form>
